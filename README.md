@@ -1,7 +1,7 @@
 # Doujin Scraper
 
 ### Description
-aight imma get this out real quick i had to resort to using doujins.com because scraping nhentai cloudflare always results in a 403 error so fuck nhentai and cloudflare
+aight imma get this out real quick i had to resort to using doujins.com because nhentai cloudflare always causes a 403 error so fuck nhentai and cloudflare
 
 ---
 
