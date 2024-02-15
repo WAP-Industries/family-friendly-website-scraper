@@ -16,4 +16,4 @@ aight imma get this out real quick i had to resort to using doujins.com because 
 ### Installation and Usage
 1. Download and extract this repository
 2. `cd` to the root directory of the extracted folder
-3. Run `python main.py --help` for a guide on scraping configurations
+3. Run `python main.py --help` in your terminal for a guide on scraping configurations
