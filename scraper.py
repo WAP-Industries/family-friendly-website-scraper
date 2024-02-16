@@ -23,7 +23,7 @@ class Scraper:
                 
                 return (choice(doujins or [None]) if random else "\n\n".join(doujins)) or "No doujins found"
             else:
-                return f"{response.status_code}: {response.reason}" 
+                return f"Error {response.status_code}: {response.reason}" 
         
         except Exception as e:
             return f"Error: {e}"
