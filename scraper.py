@@ -21,7 +21,7 @@ class Scraper:
                     for i in contents.find_all('a', href=True, class_="gallery-visited-from-favorites")     
                 ][:batch_size]
                 
-                return (choice(doujins) if random else "\n\n".join(doujins)) or "No doujins found"
+                return (choice(doujins or [None]) if random else "\n\n".join(doujins)) or "No doujins found"
             else:
                 return f"{response.status_code}: {response.reason}" 
         
