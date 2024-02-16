@@ -17,7 +17,7 @@ class Scraper:
             if response.status_code==200:
                 contents = BeautifulSoup(response.text, "html.parser")
                 doujins = [
-                    f'{i.find("div", class_="title").find("div", class_="text").get_text()}\n{Scraper.Home}/{i["href"]}'
+                    f'{i.find("div", class_="title").find("div", class_="text").get_text()}\n{Scraper.Home}{i["href"]}'
                     for i in contents.find_all('a', href=True, class_="gallery-visited-from-favorites")     
                 ][:batch_size]
                 
