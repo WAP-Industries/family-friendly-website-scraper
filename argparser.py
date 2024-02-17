@@ -2,18 +2,19 @@ import argparse
 
 Parser = argparse.ArgumentParser(formatter_class=argparse.RawTextHelpFormatter)
 
+LoadMessage = lambda x: f"{x}\nuse wildcard ( * ) to load saved configurations"
 
 Parser.add_argument(
     "--tags", 
     nargs="+", 
-    help="doujin tags to search for\nuse * to load saved configurations", 
+    help=LoadMessage("doujin tags to search for"), 
     required=True
 )
 Parser.add_argument(
     "--exclude", 
     nargs="+", 
     default=[], 
-    help="nasty shit to filter out\nuse * to load saved configurations"
+    help=LoadMessage("nasty shit to filter out")
 )
 Parser.add_argument(
     "--page", 
