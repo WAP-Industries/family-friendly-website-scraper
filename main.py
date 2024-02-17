@@ -5,7 +5,19 @@ from argparser import Parser
 
 def main():
     args = Parser.parse_args()
-    print(f"\n=== Fetch Results ===\n\n{Scraper.Scrape(args.tags, args.exclude, args.page, args.batchsize, args.random)}\n")
+
+    config = {
+        "Tags": args.tags,
+        "Exclude": args.exclude
+    }
+    for i in config:
+        if "*" in config[i]:
+            res = Scraper.LoadConfig()
+            if not res[0]:
+                return Scraper.Error(f"Unable to load configurations as {res[1]}")
+            config[i] = Scraper.Config[i]
+
+    return f"=== Fetch Results ===\n\n{Scraper.Scrape(*config.values(), args.page, args.batchsize, args.random, args.saveconfig)}"
 
 if __name__=="__main__":
-    main()
+    print(f"\n{main()}\n")

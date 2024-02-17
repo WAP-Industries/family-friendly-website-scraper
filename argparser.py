@@ -2,6 +2,7 @@ import argparse
 
 Parser = argparse.ArgumentParser()
 
+
 Parser.add_argument(
     "--tags", 
     nargs="+", 
@@ -26,8 +27,14 @@ Parser.add_argument(
     default=None, 
     help="max number of results"
 )
+
 Parser.add_argument(
     "--random", 
     action="store_true", 
     help="pick a random doujin from the fetched results"
+)
+Parser.add_argument(
+    "--saveconfig",
+    action="store_true",
+    help="save or override current tag configurations"
 )
