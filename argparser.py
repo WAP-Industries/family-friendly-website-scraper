@@ -1,19 +1,19 @@
 import argparse
 
-Parser = argparse.ArgumentParser()
+Parser = argparse.ArgumentParser(formatter_class=argparse.RawTextHelpFormatter)
 
 
 Parser.add_argument(
     "--tags", 
     nargs="+", 
-    help="doujin tags to search for", 
+    help="doujin tags to search for\nuse * to load saved configurations", 
     required=True
 )
 Parser.add_argument(
     "--exclude", 
     nargs="+", 
     default=[], 
-    help="nasty shit to filter out"
+    help="nasty shit to filter out\nuse * to load saved configurations"
 )
 Parser.add_argument(
     "--page", 
@@ -36,5 +36,5 @@ Parser.add_argument(
 Parser.add_argument(
     "--saveconfig",
     action="store_true",
-    help="save or override current tag configurations"
+    help="save current tag configurations"
 )
