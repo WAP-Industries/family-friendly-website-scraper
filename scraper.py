@@ -30,7 +30,7 @@ class Scraper:
                     Scraper.Config["Tags"], Scraper.Config["Exclude"] = tags, exclude
                     Scraper.SaveConfig()
                 
-                return (choice(doujins) if random and doujins else "\n\n".join(doujins)) or "No doujins found"
+                return (choice(doujins or [None]) if random else "\n\n".join(doujins)) or "No doujins found"
             else:
                 return Scraper.Error(response.reason, str(response.status_code))
         
