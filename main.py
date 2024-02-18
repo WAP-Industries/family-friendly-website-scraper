@@ -14,8 +14,7 @@ def main() -> str:
         res = Scraper.LoadConfig()
         if not res[0]:
             return Scraper.Error(f"Unable to load configurations as {res[1]}")
-        for i in config:
-            config[i] = [y for x in config[i] for y in (Scraper.Config[i] if x=="*" else [x])]
+        config = [y for i in config for x in config[i] for y in (Scraper.Config[i] if x=="*" else [x])]
 
     return f"=== Fetch Results ===\n\n{Scraper.Scrape(*config.values(), args.page, args.batchsize, args.random, args.saveconfig)}"
 
