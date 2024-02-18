@@ -7,8 +7,10 @@ aight imma get this out real quick i had to resort to scraping doujins.com becau
 
 ### Dependencies
 1. [beautifulsoup4](https://pypi.org/project/beautifulsoup4/)  
-```pip install bs4```
-2. [requests](https://pypi.org/project/requests/)  
+```
+pip install bs4
+```
+3. [requests](https://pypi.org/project/requests/)  
 ```pip install requests```
 
 ---
