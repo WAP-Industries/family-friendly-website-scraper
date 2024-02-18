@@ -10,8 +10,11 @@ aight imma get this out real quick i had to resort to scraping doujins.com becau
 ```
 pip install bs4
 ```
-3. [requests](https://pypi.org/project/requests/)  
-```pip install requests```
+
+2. [requests](https://pypi.org/project/requests/)  
+```
+pip install requests
+```
 
 ---
 
