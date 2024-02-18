@@ -13,16 +13,12 @@ class Scraper:
     
     @staticmethod
     def Error(message: str, code: str="") -> str:
-        return f"Error{code}: {message}"
-
-    @staticmethod
-    def FormQuery(t: list, e: list, p: int) -> str:
-        return f"{Scraper.Home}/searches?words={'+'.join([*t, *map(lambda x:f'-{x}', e)])}&page={p}"
+        return f"Error{code:>{len(code)+bool(code)}}: {message}"
 
     @staticmethod
     def Scrape(tags: list, exclude: list, page: int, batch_size: int, random: bool, save: bool) -> str:
         try:
-            response = requests.get(Scraper.FormQuery(tags, exclude, page))
+            response = requests.get(f"{Scraper.Home}/searches?words={'+'.join([*tags, *map(lambda x:f'-{x}', exclude)])}&page={page}")
 
             if response.status_code==200:
                 contents = BeautifulSoup(response.text, "html.parser")
@@ -37,7 +33,7 @@ class Scraper:
                 
                 return (choice(doujins or [None]) if random else "\n\n".join(doujins)) or "No doujins found"
             else:
-                return Scraper.Error(response.reason, f" {response.status_code}")
+                return Scraper.Error(response.reason, str(response.status_code))
         
         except Exception as e:
             return Scraper.Error(e)
@@ -57,8 +53,7 @@ class Scraper:
 
         try:
             ind = contents.index("[Exclude]")
-            Scraper.Config["Tags"] = contents[contents.index("[Tags]")+1:ind]
-            Scraper.Config["Exclude"] = contents[ind+1:]
+            Scraper.Config["Tags"], Scraper.Config["Exclude"] = contents[contents.index("[Tags]")+1:ind], contents[ind+1:] 
             return (True, "")
         except:
             return (False, "save file format is invalid")
