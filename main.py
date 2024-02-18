@@ -1,10 +1,9 @@
 __import__("sys").dont_write_bytecode = True
 
 from scraper import Scraper
-from argparser import Parser
 
 def main() -> str:
-    args = Parser.parse_args()
+    args = __import__("argparser").Parser.parse_args()
 
     config = {
         "Tags": args.tags,
